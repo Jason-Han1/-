@@ -1,0 +1,26 @@
+{
+    "tooltip": {
+        "show": false
+    },
+    "xAxis": {
+        "show": false
+    },
+    "yAxis": {
+        "show": false
+    },
+    "series": {
+        "type": "custom",
+        "renderItem": "function(params, api) {\n            var style = api.style();\n            var cw = api.getWidth(),ch = api.getHeight(),rw=160,rh=10,av=api.value(2),cv=api.value(3),arw=rw*av/(av+cv),crw=rw*cv/(av+cv),unit=10000,ul='(亿元)',cul='亿';\n            console.log(rw)\n            return {\n                type:'group',\n                position:[cw/2,ch/2],\n                children:[\n                    {\n                      type: 'text',\n                      style:{\n                        fontSize:36,\n                        textAlign:'center',\n                        textFill:'#424658',\n                        textVerticalAlign:'middle',\n                        text:(api.value(1)/unit).toFixed(0)\n                      },\n                      position:[0,-35]\n                    },\n                    {\n                      type: 'text',\n                      style:{\n                        fontSize:12,\n                        textAlign:'center',\n                        textVerticalAlign:'middle',\n                        textFill:'#999',\n                        text:style.text+ul,\n                      },\n                    },\n                    {\n                        type:'group',\n                        position:[0,30],\n                        children:[\n                            {\n                                type:'group',\n                                position:[-rw/2,-rh/2],\n                                children:[\n                                    {\n                                        type: 'rect',\n                                        shape:{\n                                            width:crw,\n                                            height:rh,\n                                        },\n                                        style:{\n                                            fill:'#ff6367'\n                                        }\n                                    },{\n                                        type: 'rect',\n                                        shape:{\n                                            width:arw,\n                                            height:rh,\n                                        },\n                                        style:{\n                                            fill:'#2872eb'\n                                        },\n                                        position:[crw,0]\n                                    }\n                                ]\n                            },\n                            {\n                              type: 'text',\n                              style:{\n                                fontSize:12,\n                                textAlign:'right',\n                                textFill:'#424658',\n                                textVerticalAlign:'middle',\n                                text:'-'+(cv/unit).toFixed(0)+cul\n                              },\n                              position:[-(rw/2+5),0]\n                            },\n                            {\n                              type: 'text',\n                              style:{\n                                fontSize:12,\n                                textAlign:'right',\n                                textFill:'#999',\n                                textVerticalAlign:'middle',\n                                text:api.value(1)+'个项目'\n                              },\n                              position:[-(rw/2+5),20]\n                            },\n                            {\n                              type: 'text',\n                              style:{\n                                fontSize:12,\n                                textAlign:'left',\n                                textFill:'#424658',\n                                textVerticalAlign:'middle',\n                                text:'+'+(av/unit).toFixed(0)+cul\n                              },\n                              position:[rw/2+5,0]\n                            },\n                            {\n                              type: 'text',\n                              style:{\n                                fontSize:12,\n                                textAlign:'left',\n                                textFill:'#999',\n                                textVerticalAlign:'middle',\n                                text:api.value(5)+'个项目'\n                              },\n                              position:[rw/2+5,20]\n                            },\n                        ]\n                    }\n                  ]\n            }\n        }",
+        "label": {
+            "normal": {
+                "show": true,
+                "formatter": "function(v){return v.value[0]}"
+            }
+        },
+        "encode": {
+            "x": 1,
+            "y": 2,
+            "itemName": 0
+        }
+    }
+}

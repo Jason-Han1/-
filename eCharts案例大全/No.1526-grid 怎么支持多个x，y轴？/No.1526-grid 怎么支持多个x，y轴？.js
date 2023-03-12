@@ -1,0 +1,151 @@
+option = {
+      legend: {},
+      grid: [
+        {
+          x: 80,
+          y: 80,
+          width: 200,
+          height: 200,
+          show: true,
+        },
+        {
+          x: 350,
+          y: 80,
+          width: 200,
+          height: 200,
+          show: true,
+        },
+        {
+          x: 80,
+          y: 380,
+          width: 200,
+          height: 200,
+          show: true,
+        },
+        {
+          x: 350,
+          y: 380,
+          width: 200,
+          height: 200,
+          show: true,
+        },
+        {
+          x: 80,
+          y: 680,
+          width: 200,
+          height: 200,
+          show: true,
+        },
+      ],
+      xAxis: [
+        {
+          type: 'category',
+          boundaryGap: false,
+          gridIndex: 0, // 这个值很重要，用于指定图表组件属于哪个画布
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+        {
+          type: 'category',
+          gridIndex: 1,
+          boundaryGap: false,
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+        {
+          type: 'category',
+          boundaryGap: false,
+          gridIndex: 2, // 这个值很重要，用于指定图表组件属于哪个画布
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+        {
+          type: 'category',
+          boundaryGap: false,
+          gridIndex: 3,
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+        {
+          type: 'category',
+          boundaryGap: false,
+          gridIndex: 4, // 这个值很重要，用于指定图表组件属于哪个画布
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+      ],
+      yAxis: [
+        { gridIndex: 0 },
+        { gridIndex: 1 },
+        { gridIndex: 2 },
+        { gridIndex: 3 },
+        { gridIndex: 4 },
+      ],
+      series: [
+        {
+          name: 'SO2',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'line',
+        },
+        {
+          name: 'CO',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          data: [220, 300, 250, 180, 170, 210, 230],
+          type: 'line',
+        },
+        {
+          name: 'SO2',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          data: [120, 200, 150, 80, 70],
+          type: 'line',
+        },
+        {
+          name: 'CO',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          data: [220, 300, 50, 180, 70],
+          type: 'line',
+        },
+        {
+          name: 'SO2',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'line',
+        },
+        {
+          name: 'CO',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          data: [220, 300, 50, 180, 70],
+          type: 'line',
+        },
+        {
+          name: 'SO2',
+          xAxisIndex: 3,
+          yAxisIndex: 3,
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'line',
+        },
+        {
+          name: 'CO',
+          xAxisIndex: 3,
+          yAxisIndex: 3,
+          data: [220, 300, 50, 180, 70],
+          type: 'line',
+        },
+        {
+          name: 'SO2',
+          xAxisIndex: 4,
+          yAxisIndex: 4,
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'line',
+        },
+        {
+          name: 'CO',
+          xAxisIndex: 4,
+          yAxisIndex: 4,
+          data: [220, 300, 50, 180, 70],
+          type: 'line',
+        },
+      ],
+    }

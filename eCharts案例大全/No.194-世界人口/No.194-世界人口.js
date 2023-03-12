@@ -1,0 +1,347 @@
+var chartDom = document.getElementById('chart-panel');
+var myChart = echarts.init(chartDom);
+
+var Data = [
+  [
+    { value: [4552824971], name: '亚洲' },
+    { value: '1411780000', name: '中国' },
+    { value: '1354051854', name: '印度' },
+    { value: '266794980', name: '印度尼西亚' },
+    { value: '200813818', name: '巴基斯坦' },
+    { value: '166368149', name: '孟加拉国' },
+    { value: '127185332', name: '日本' },
+    { value: '106512074', name: '菲律宾' },
+    { value: '96491146', name: '越南' },
+    { value: '82011735', name: '伊朗' },
+    { value: '81916871', name: '土耳其' },
+    { value: '69183173', name: '泰国' },
+    { value: '53855735', name: '缅甸' },
+    { value: '51269185', name: '韩国' },
+    { value: '39339753', name: '伊拉克' },
+    { value: '36373176', name: '阿富汗' },
+    { value: '33554343', name: '沙特阿拉伯' },
+    { value: '32364996', name: '乌兹别克斯坦' },
+    { value: '32042458', name: '马来西亚' },
+    { value: '29624035', name: '尼泊尔' },
+    { value: '28915284', name: '也门' },
+    { value: '25663011', name: '朝鲜' },
+    { value: '20950041', name: '斯里兰卡' },
+    { value: '18403860', name: '哈萨克斯坦' },
+    { value: '18284407', name: '叙利亚' },
+    { value: '16245729', name: '柬埔寨' },
+    { value: '11489082', name: '古巴' },
+    { value: '10882996', name: '多明尼加共和国' },
+    { value: '9923914', name: '阿塞拜疆' },
+    { value: '9903802', name: '约旦' },
+    { value: '9541615', name: '阿联酋' },
+    { value: '9417167', name: '洪都拉斯' },
+    { value: '9107211', name: '塔吉克斯坦' },
+    { value: '8452841', name: '以色列' },
+    { value: '6961210', name: '老挝' },
+    { value: '6284757', name: '尼加拉瓜' },
+    { value: '6132932', name: '吉尔吉斯斯坦' },
+    { value: '6093509', name: '黎巴嫩' },
+    { value: '5851466', name: '土库曼斯坦' },
+    { value: '5791901', name: '新加坡' },
+    { value: '5052776', name: '巴勒斯坦' },
+    { value: '4829946', name: '阿曼' },
+    { value: '4197128', name: '科威特' },
+    { value: '3907131', name: '格鲁吉亚' },
+    { value: '3121772', name: '蒙古' },
+    { value: '2934152', name: '亚美尼亚' },
+    { value: '2898677', name: '牙买加' },
+    { value: '2694849', name: '卡塔尔' },
+    { value: '1566993', name: '巴林' },
+    { value: '1372598', name: '特立尼达和多巴哥' },
+    { value: '1324094', name: '东帝汶' },
+    { value: '817054', name: '不丹' },
+    { value: '568301', name: '苏里南' },
+    { value: '449173', name: '瓜德罗普岛' },
+    { value: '444259', name: '马尔代夫' },
+    { value: '434076', name: '文莱' },
+    { value: '382444', name: '伯利兹' },
+  ],
+  [
+    { value: [537938466], name: '北美洲' },
+    { value: '326766748', name: '美国' },
+    { value: '130759074', name: '墨西哥' },
+    { value: '36953765', name: '加拿大' },
+    { value: '17245346', name: '危地马拉' },
+    { value: '11112945', name: '海地' },
+    { value: '4953199', name: '哥斯达黎加' },
+    { value: '4162618', name: '巴拿马' },
+    { value: '3659007', name: '波多黎各' },
+    { value: '399285', name: '巴哈马' },
+    { value: '385065', name: '马提尼克' },
+    { value: '286388', name: '巴巴多斯' },
+    { value: '179667', name: '圣露西亚' },
+    { value: '161577', name: '库拉索' },
+    { value: '110200', name: '圣文森特和格林纳丁斯' },
+    { value: '108339', name: '格林纳达' },
+    { value: '104914', name: '美属维尔京群岛' },
+    { value: '103050', name: '安提瓜和巴布达' },
+    { value: '74308', name: '多米尼克' },
+    { value: '62348', name: '开曼群岛' },
+    { value: '61070', name: '百慕大' },
+    { value: '56565', name: '格陵兰岛' },
+    { value: '55850', name: '圣基茨和尼维斯' },
+    { value: '40552', name: '圣马丁岛' },
+    { value: '35963', name: '特克斯和凯科斯群岛' },
+    { value: '31719', name: '英属维尔京群岛' },
+    { value: '15045', name: '安圭拉' },
+    { value: '6342', name: '圣皮埃尔和密克隆' },
+    { value: '5203', name: '蒙特塞拉特' },
+    { value: '42314', name: '圣马丁岛' },
+  ],
+  [
+    { value: [434189442], name: '南美洲' },
+    { value: '210867954', name: '巴西' },
+    { value: '49464683', name: '哥伦比亚' },
+    { value: '44688864', name: '阿根廷' },
+    { value: '32551815', name: '秘鲁' },
+    { value: '32381221', name: '委内瑞拉' },
+    { value: '18197209', name: '智利' },
+    { value: '16863425', name: '厄瓜多尔' },
+    { value: '11215674', name: '玻利维亚' },
+    { value: '6896908', name: '巴拉圭' },
+    { value: '6411558', name: '萨尔瓦多' },
+    { value: '3469551', name: '乌拉圭' },
+    { value: '782225', name: '圭亚那' },
+    { value: '289763', name: '法属圭亚那' },
+    { value: '105670', name: '阿鲁巴岛' },
+    { value: '2922', name: '福克兰群岛' },
+  ],
+  [
+    { value: [41261212], name: '大洋洲' },
+    { value: '24772247', name: '澳大利亚' },
+    { value: '8418346', name: '巴布亚新几内亚' },
+    { value: '4749598', name: '新西兰' },
+    { value: '912241', name: '斐济' },
+    { value: '623281', name: '所罗门群岛' },
+    { value: '285859', name: '法属玻利尼西亚' },
+    { value: '282117', name: '瓦努阿图' },
+    { value: '279821', name: '新喀里多尼亚' },
+    { value: '197695', name: '萨摩亚' },
+    { value: '165718', name: '关岛' },
+    { value: '118414', name: '基里巴斯' },
+    { value: '109008', name: '汤加' },
+    { value: '106227', name: '密克罗尼西亚' },
+    { value: '55679', name: '美属萨摩亚' },
+    { value: '55194', name: '北马里亚纳群岛' },
+    { value: '53167', name: '马绍尔群岛' },
+    { value: '21964', name: '帕劳' },
+    { value: '17411', name: '库克群岛' },
+    { value: '11683', name: '瓦利斯和富图纳群岛' },
+    { value: '11312', name: '瑙鲁' },
+    { value: '11287', name: '图瓦卢' },
+    { value: '1624', name: '纽埃' },
+    { value: '1319', name: '托克劳群岛' },
+  ],
+  [
+    { value: [745027585], name: '欧洲' },
+    { value: '143964709', name: '俄罗斯' },
+    { value: '82293457', name: '德国' },
+    { value: '66573504', name: '英国' },
+    { value: '65233271', name: '法国' },
+    { value: '60482200', name: '意大利' },
+    { value: '46397452', name: '西班牙' },
+    { value: '44009214', name: '乌克兰' },
+    { value: '38104832', name: '波兰' },
+    { value: '19580634', name: '罗马尼亚' },
+    { value: '17084459', name: '荷兰' },
+    { value: '11498519', name: '比利时' },
+    { value: '11142161', name: '希腊' },
+    { value: '10625250', name: '捷克共和国' },
+    { value: '10291196', name: '葡萄牙' },
+    { value: '9982709', name: '瑞典' },
+    { value: '9688847', name: '匈牙利' },
+    { value: '9452113', name: '白俄罗斯' },
+    { value: '8762027', name: '塞尔维亚' },
+    { value: '8751820', name: '奥地利' },
+    { value: '8544034', name: '瑞士' },
+    { value: '7036848', name: '保加利亚' },
+    { value: '5754356', name: '丹麦' },
+    { value: '5542517', name: '芬兰' },
+    { value: '5449816', name: '斯洛伐克' },
+    { value: '5353363', name: '挪威' },
+    { value: '4803748', name: '爱尔兰' },
+    { value: '4164783', name: '克罗地亚' },
+    { value: '4041065', name: '摩尔多瓦' },
+    { value: '3503554', name: '波黑' },
+    { value: '2934363', name: '阿尔巴尼亚' },
+    { value: '2876475', name: '立陶宛' },
+    { value: '2085051', name: '马其顿' },
+    { value: '2081260', name: '斯洛文尼亚' },
+    { value: '1929938', name: '拉脱维亚' },
+    { value: '1306788', name: '爱沙尼亚' },
+    { value: '1189085', name: '塞浦路斯' },
+    { value: '629219', name: '黑山' },
+    { value: '590321', name: '卢森堡' },
+    { value: '432089', name: '马耳他' },
+    { value: '337780', name: '冰岛' },
+    { value: '84831', name: '马恩岛' },
+    { value: '76953', name: '安道尔' },
+    { value: '49489', name: '法罗群岛' },
+    { value: '38897', name: '摩纳哥' },
+    { value: '38155', name: '列支敦士登' },
+    { value: '34733', name: '直布罗陀' },
+    { value: '33557', name: '圣马力诺' },
+    { value: '801', name: '梵蒂冈' },
+    { value: '98840', name: '泽西岛' },
+    { value: '66502', name: '根西岛' },
+  ],
+  [
+    { value: [1285692503], name: '非洲' },
+    { value: '195875237', name: '尼日利亚' },
+    { value: '106672306', name: '埃塞俄比亚' },
+    { value: '99375741', name: '埃及' },
+    { value: '82643624', name: '刚果民主共和国' },
+    { value: '59091392', name: '坦桑尼亚' },
+    { value: '57398421', name: '南非' },
+    { value: '50950879', name: '肯尼亚' },
+    { value: '44270563', name: '乌干达' },
+    { value: '42008054', name: '阿尔及利亚' },
+    { value: '41511526', name: '苏丹' },
+    { value: '36191805', name: '摩洛哥' },
+    { value: '30774205', name: '安哥拉' },
+    { value: '30528673', name: '莫桑比克' },
+    { value: '29463643', name: '加纳' },
+    { value: '26262810', name: '马达加斯加' },
+    { value: '24905843', name: '科特迪瓦' },
+    { value: '24678234', name: '喀麦隆' },
+    { value: '22311375', name: '尼日尔' },
+    { value: '19751651', name: '布基纳法索' },
+    { value: '19164728', name: '马拉维' },
+    { value: '19107706', name: '马里' },
+    { value: '17609178', name: '赞比亚' },
+    { value: '16913261', name: '津巴布韦' },
+    { value: '16294270', name: '塞内加尔' },
+    { value: '15353184', name: '乍得' },
+    { value: '15181925', name: '索马里' },
+    { value: '13052608', name: '几内亚' },
+    { value: '12919053', name: '南苏丹' },
+    { value: '12501156', name: '卢旺达' },
+    { value: '11659174', name: '突尼斯' },
+    { value: '11485674', name: '贝宁' },
+    { value: '11216450', name: '布隆迪' },
+    { value: '7990926', name: '多哥' },
+    { value: '7719729', name: '塞拉利昂' },
+    { value: '6470956', name: '利比亚' },
+    { value: '5399895', name: '刚果共和国' },
+    { value: '5187948', name: '厄立特里亚' },
+    { value: '4853516', name: '利比里亚' },
+    { value: '4737423', name: '中非共和国' },
+    { value: '4540068', name: '毛里塔尼亚' },
+    { value: '2587801', name: '纳米比亚' },
+    { value: '2333201', name: '博茨瓦纳' },
+    { value: '2263010', name: '莱索托' },
+    { value: '2163765', name: '冈比亚' },
+    { value: '2067561', name: '加蓬' },
+    { value: '1907268', name: '几内亚比绍' },
+    { value: '1391385', name: '斯威士兰' },
+    { value: '1313894', name: '赤道几内亚' },
+    { value: '1268315', name: '毛里求斯' },
+    { value: '971408', name: '吉布提' },
+    { value: '883247', name: '留尼旺岛' },
+    { value: '832347', name: '科摩罗' },
+    { value: '567421', name: '西撒哈拉' },
+    { value: '553335', name: '佛得角' },
+    { value: '259682', name: '马约特岛' },
+    { value: '208818', name: '圣多美和普林西比' },
+    { value: '95235', name: '塞舌尔' },
+  ],
+];
+var BigData = [];
+var SmallData = [];
+var Radius = [];
+var ZRadius = [];
+for (var prop in Data) {
+  BigData.push(Data[prop][0]);
+  for (var i = 1; i < Data[prop].length; i++) {
+    SmallData.push(Data[prop][i]);
+  }
+}
+option = {
+  tooltip: {
+    trigger: 'item',
+  },
+  series: [
+    {
+      name: '总人口',
+      type: 'pie',
+      radius: ['0%', '10%'],
+      data: [{ value: [7596934179], name: '总人数' }],
+      label: {
+        position: 'center',
+        formatter: function (e) {
+          return e.data.name + ':' + e.data.value[0];
+        },
+      },
+    },
+    {
+      name: '州',
+      type: 'pie',
+      radius: ['10%', '30%'],
+      data: BigData,
+      label: {
+        position: 'inside',
+        fontSize: 20,
+      },
+    },
+    {
+      name: '国家',
+      type: 'pie',
+      radius: ['30%', '100%'],
+      data: SmallData,
+      label: {
+        position: 'inside',
+      },
+    },
+  ],
+
+};
+
+myChart.on('click', function (e) {
+  if (BigData.length > 1) {
+    for (var cData in Data) {
+      if (Data[cData][0].name == e.data.name) {
+        SmallData.splice(0, SmallData.length);
+        BigData = [Data[cData][0]];
+        for (var i = 1; i < Data[cData].length; i++) {
+          SmallData.push(Data[cData][i]);
+        }
+      }
+    }
+    Radius = ['0%', '30%'];
+    ZRadius = ['0%', '0%'];
+  } else {
+    SmallData.splice(0, SmallData.length);
+    BigData.splice(0, BigData.length);
+    for (var prop in Data) {
+      BigData.push(Data[prop][0]);
+      for (var f = 1; f < Data[prop].length; f++) {
+        SmallData.push(Data[prop][f]);
+      }
+    }
+    Radius = ['10%', '30%'];
+    ZRadius = ['0%', '10%'];
+  }
+
+  myChart.setOption({
+    series: [
+      {
+        name: '总人口',
+        radius: ZRadius,
+      },
+      {
+        name: '州',
+        data: BigData,
+        radius: Radius,
+      },
+      {
+        name: '国家',
+        data: SmallData,
+      },
+    ],
+  });
+});

@@ -1,0 +1,305 @@
+// 获得地理数据的 url
+var dataUrl = '/asset/get/s/data-1631169603552-ijnA-1U9o.json';
+
+var mapData = [
+    {
+        name: '南昌市',
+        value: [115.892151, 28.676493],
+    },
+    {
+        name: '景德镇市',
+        value: [117.214664, 29.29256],
+    },
+    {
+        name: '萍乡市',
+        value: [113.852186, 27.622946],
+    },
+    {
+        name: '九江市',
+        value: [115.8, 29.5],
+    },
+    {
+        name: '新余市',
+        value: [114.9, 27.9],
+    },
+    {
+        name: '鹰潭市',
+        value: [117.033838, 28.238638],
+    },
+    {
+        name: '赣州市',
+        value: [114.940278, 25.85097],
+    },
+    {
+        name: '吉安市',
+        value: [114.986373, 27.111699],
+    },
+    {
+        name: '宜春市',
+        value: [115, 28.5],
+    },
+    {
+        name: '抚州市',
+        value: [116.358351, 27.7],
+    },
+    {
+        name: '上饶市',
+        value: [117.8, 28.7],
+    },
+];
+
+// 手机列表
+var cellPhoneList = [
+    {
+        name: '南昌市',
+        apple: 10,
+        samsung: 20,
+        xiaomi: 30,
+        huawei: 40,
+    },
+    {
+        name: '景德镇市',
+        apple: 40,
+        samsung: 30,
+        xiaomi: 20,
+        huawei: 10,
+    },
+    {
+        name: '萍乡市',
+        apple: 40,
+        samsung: 10,
+        xiaomi: 20,
+        huawei: 30,
+    },
+    {
+        name: '九江市',
+        apple: 40,
+        samsung: 10,
+        xiaomi: 30,
+        huawei: 20,
+    },
+    {
+        name: '新余市',
+        apple: 40,
+        samsung: 20,
+        xiaomi: 10,
+        huawei: 30,
+    },
+    {
+        name: '鹰潭市',
+        apple: 40,
+        samsung: 20,
+        xiaomi: 30,
+        huawei: 10,
+    },
+    {
+        name: '赣州市',
+        apple: 10,
+        samsung: 30,
+        xiaomi: 20,
+        huawei: 40,
+    },
+    {
+        name: '吉安市',
+        apple: 10,
+        samsung: 40,
+        xiaomi: 30,
+        huawei: 20,
+    },
+    {
+        name: '宜春市',
+        apple: 30,
+        samsung: 20,
+        xiaomi: 10,
+        huawei: 40,
+    },
+    {
+        name: '抚州市',
+        apple: 30,
+        samsung: 40,
+        xiaomi: 20,
+        huawei: 10,
+    },
+    {
+        name: '上饶市',
+        apple: 30,
+        samsung: 10,
+        xiaomi: 20,
+        huawei: 40,
+    },
+];
+
+var appleDom =
+    '<span style="width:10px;height:10px;margin-right:5px;background-color:#fff94f;border-radius:50%;display:inline-block;"></span>';
+var samsungDom =
+    '<span style="width:10px;height:10px;margin-right:5px;background-color:#2b8bf3;border-radius:50%;display:inline-block;"></span>';
+var xiaomiDom =
+    '<span style="width:10px;height:10px;margin-right:5px;background-color:#3dd477;border-radius:50%;display:inline-block;"></span>';
+var huaweiDom =
+    '<span style="width:10px;height:10px;margin-right:5px;background-color:#f00;border-radius:50%;display:inline-block;"></span>';
+
+$.get(dataUrl, (json) => {
+    // 注册地图
+    echarts.registerMap('jx', json);
+
+    option = {
+        // 标题
+        title: {
+            show: false,
+        },
+
+        tooltip: {
+            trigger: 'item',
+        },
+
+        // 地理坐标系组件
+        geo: {
+            map: 'jx',
+            zoom: 1.2,
+
+            label: {
+                show: false,
+            },
+
+            itemStyle: {
+                areaColor: 'rgba(4,73,128, 1)',
+
+                // 设置外层边框
+                borderWidth: 2,
+                borderColor: 'rgba(34,216,255, 1)',
+                shadowColor: 'rgba(34,216,255, 1)', // #044B4D
+                shadowOffsetY: 7,
+                shadowOffsetX: 7,
+                shadowBlur: 6,
+            },
+        },
+
+        series: [
+            {
+                // 图表的类型为散点图（地图上的黄色旗子）
+                type: 'scatter',
+                name: 'hasProperty',
+
+                // 采用的坐标系为地理坐标系
+                coordinateSystem: 'geo',
+
+                // 散点图上点的大小（旗子的大小）
+                symbolSize: 20,
+
+                // 标记的图形
+                symbol: function (value, params) {
+                    return 'image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAABh0lEQVQ4jdXVvWtVQRDG4SdREIJgEwuJBi3URlBEiYUWKgSDhVgrFhb5BwIWipWNvRDETkhQAmlSplACQRKIjQoWIgh+FBokGj8IiiOLc8MlnJv7wW18YWDZd+a35+zZMytCKzEZISIMtpivV3saxdZWKlpKqtMNnMc4nuNXWj/wAV86BRcdwb0G3ju8xbN2t6KZduMEHnQbXHQfc90Gr2CsDLoN3oEDnYDnm/g9uFO47YIv4TIWsIzVipxjuNrJcZvMqFI/9mOgE/BmWs7o+sdb1/8H3rjHgziX/WAfRhrUncK1bERLmMW3qq24mGf0De7iZI4b6TN+4wqm8REP84H+KcLtbOJ/IoxH2FvRuBs1+p4IQxEepb8W4ULxirmSky83uRGa3SD96ZeYqYFv1k1ORDhcUXgmwmiE7Rvmt0QYjvAk639GGCleeZWis7iO0/m/v8dTvM5x/a+7E7twEMez8axhCrfwqiTVwDUN5CJHcQh7EtSHbfie19CnXPQFFvEYX9cp+As8wAD9SbJQaQAAAABJRU5ErkJggg==';
+                },
+
+                // 区名称的样式
+                label: {
+                    show: true,
+                    formatter: '{b}',
+                    position: 'bottom',
+                    color: '#fff',
+                    fontSize: 14,
+                },
+
+                itemStyle: {
+                    color: '#ddb926',
+                },
+
+                tooltip: {
+                    show: false,
+                },
+
+                data: this.mapData,
+            },
+            {
+                // 图表类型为地图
+                type: 'map',
+
+                // 使用 registerMap 注册的地图名称
+                mapType: 'jx',
+
+                // 地图缩放比例
+                zoom: 1.2,
+
+                // 提示框
+                tooltip: {
+                    triggerOn: 'mousemove',
+                    backgroundColor: 'rgba(8, 8, 8, .85)',
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 16,
+                    },
+
+                    // 处理悬浮提示
+                    formatter: (params) => {
+                        return (
+                            params.data.name +
+                            '<br/>' +
+                            appleDom +
+                            '苹果：' +
+                            params.data.apple +
+                            '<br/>' +
+                            huaweiDom +
+                            '华为：' +
+                            params.data.huawei +
+                            '<br/>' +
+                            xiaomiDom +
+                            '小米：' +
+                            params.data.xiaomi +
+                            '<br/>' +
+                            samsungDom +
+                            '三星：' +
+                            params.data.samsung +
+                            '<br/>'
+                        );
+                    },
+                },
+
+                // 标签的样式
+                label: {
+                    // 标签在默认状态下的样式
+                    normal: {
+                        show: false,
+                    },
+
+                    // 标签在高亮状态下的样式
+                    emphasis: {
+                        show: false,
+                    },
+                },
+
+                // 选中状态下的样式
+                select: {
+                    // 标签在选中状态下的样式
+                    label: {
+                        show: false,
+                    },
+
+                    // 选中状态下地图上区域块的样式
+                    itemStyle: {
+                        areaColor: '#2b8bf3',
+                    },
+                },
+
+                // 地图上区域块的样式
+                itemStyle: {
+                    // 默认状态下地图的颜色
+                    normal: {
+                        areaColor: '#083288',
+                        borderColor: 'rgba(0, 210, 255, 1)', // #00d2ff
+                        borderWidth: 2,
+                        color: '#fff',
+                    },
+
+                    // 选中状态下地图的颜色
+                    emphasis: {
+                        areaColor: '#2b8bf3',
+                    },
+                },
+
+                data: cellPhoneList,
+            },
+        ],
+    };
+
+    myChart.setOption(option);
+});

@@ -1,0 +1,83 @@
+option = {
+    backgroundColor: '#00265f',
+    "title": {
+        // "text": "政策补贴额度",
+        x: "center",
+        y:"4%",
+        textStyle: {
+            color: '#fff',
+            fontSize: '22'
+        },
+        subtextStyle: {
+            color: '#90979c',
+            fontSize: '16',
+
+        },
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            // type: 'shadow'
+        }
+    },
+    grid: {
+        top: '15%',
+        right: '3%',
+        left: '15%',
+        bottom: '12%'
+    },
+    xAxis: [{
+        type: 'category',
+        data: ['制造业', '建筑业', '农林', '房地产', '金融业', '其他'],
+        axisLine: {
+            lineStyle: {
+                color: 'rgba(255,255,255,0.12)'
+            }
+        },
+        axisLabel: {
+            margin: 10,
+            color: '#e2e9ff',
+            textStyle: {
+                fontSize: 14
+            },
+        },
+    }],
+    yAxis: [{
+        // name: '单位：万元',
+        axisLabel: {
+            formatter: '{value}',
+            color: '#e2e9ff',
+        },
+        axisLine: {
+            show: false,
+            lineStyle: {
+                color: 'rgba(255,255,255,1)'
+            }
+        },
+        splitLine: {
+            lineStyle: {
+                color: 'rgba(255,255,255,0.12)'
+            }
+        }
+    }],
+    series: [{
+        type: 'bar',
+        data: [5000, 2600, 1300, 1300, 1250, 1500],
+        barWidth: '20px',
+        itemStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: '#00c0f9' // 0% 处的颜色
+                }, {
+                    offset: 1,
+                    color: '#0052aa' // 100% 处的颜色
+                }], false),
+                // barBorderRadius: [30, 30, 30, 30],
+                shadowColor: 'rgba(0,160,221,1)',
+                shadowBlur: 4,
+            }
+        },
+  
+    }]
+};

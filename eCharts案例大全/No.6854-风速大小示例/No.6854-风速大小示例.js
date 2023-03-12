@@ -1,0 +1,140 @@
+   option={
+        color: ["#82F480", "#FDED35", "#FB6702", "#FB0200", "#BB0201"],
+        title: {
+          text: "风速大小示例",
+          left: "10",
+          top: "10",
+          textStyle: {
+            fontSize: 13,
+          },
+        },
+        angleAxis: {
+          type: "category",
+          data: ["北", "东北", "东", "东南", "南", "西南", "西", "西北"],
+          boundaryGap: false,
+          axisTick: {
+            show: false,
+          },
+          axisLine: {
+            lineStyle: {
+              color: "#30465D",
+            },
+          },
+          axisLabel: {
+            color: "#6A6B6C",
+            margin: 3,
+          },
+          splitLine: {
+            show: true,
+          },
+        },
+        radiusAxis: {
+          name: "%",
+          nameLocation: "end",
+
+          axisLine: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+          },
+          axisLabel: {
+            formatter: "{value}",
+            showMaxLabel: false,
+            color: "#000",
+          },
+          z: 10,
+        },
+        tooltip: {},
+        polar: {},
+
+        visualMap: {
+          show: true,
+          type: "piecewise",
+          left: "2%",
+          top: "10%",
+          min: 0,
+          max: 15,
+          itemSymbol: "rect",
+          itemHeight: 8.5,
+          itemWidth: 25,
+          splitNumber: 25,
+          calculable: false,
+          dimension: 1,
+          text: ["高        m/s  ", "低         "],
+          textStyle: {
+            fontSize: 10,
+          },
+          itemGap: 1,
+          inRange: {
+            color: [
+              "#FDD591",
+              "#FDD591",
+              "#FDD591",
+              "#FDD591",
+              "#FDD591",
+              "#FBAB44",
+              "#FBAB44",
+              "#FBAB44",
+              "#FBAB44",
+              "#FBAB44",
+              "#F88C15",
+              "#F88C15",
+              "#F88C15",
+              "#F88C15",
+              "#F88C15",
+              "#F73D17",
+              "#F73D17",
+              "#F73D17",
+              "#F73D17",
+              "#F73D17",
+              "#FA3A13",
+              "#FA3A13",
+              "#FA3A13",
+              "#FA3A13",
+              "#FA3A13",
+            ],
+            symbolSize: [50, 100],
+          },
+          outOfRange: {
+            color: "#000",
+          },
+        },
+        series: [
+          {
+            type: "bar",
+            data: [3.79, 4.07, 4.46, 5.76, 7.26, 6.92, 6.92, 5.32],
+            coordinateSystem: "polar",
+            name: "<0.5m/s",
+            stack: "a",
+          },
+          {
+            type: "bar",
+            data: [3.44, 3.17, 2.45, 3.58, 6.91, 6.47, 6.47, 5.5],
+            coordinateSystem: "polar",
+            name: "0.5-2m/s",
+            stack: "a",
+          },
+          {
+            type: "bar",
+            data: [1.11, 1.89, 2.97, 1.82, 4.11, 10.41, 10.01, 10.01],
+            coordinateSystem: "polar",
+            name: "2-4m/s",
+            stack: "a",
+          },
+          {
+            type: "bar",
+            data: [0.39, 2.23, 1.37, 4.25, 15.77, 13.94, 13.94, 3.53],
+            coordinateSystem: "polar",
+            name: "4-6m/s",
+            stack: "a",
+          },
+          {
+            type: "bar",
+            data: [0.51, 1.03, 1.8, 7.2, 12.34, 11.57, 11.57, 4.37],
+            coordinateSystem: "polar",
+            name: "6-8m/s",
+            stack: "a",
+          },
+        ],
+      }
